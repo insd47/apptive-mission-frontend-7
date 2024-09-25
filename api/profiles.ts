@@ -1,6 +1,11 @@
 import { Job, OnlineStatus, Profile } from "./_types/index.js";
 
 export function GET(request: Request) {
+  const authorization = request.headers.get("Authorization")?.split(" ")[1];
+  if (authorization !== process.env.API_KEY) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
   const url = request.url.split("/")[0] + "//" + request.url.split("/")[2];
 
   const random = Math.random();
