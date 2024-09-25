@@ -1,5 +1,6 @@
 {
   "name": "frontend-mission-3",
+  "type": "module",
   "packageManager": "yarn@4.5.0",
   "devDependencies": {
     "@types/node": "^22.7.0",

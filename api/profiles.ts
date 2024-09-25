@@ -1,4 +1,4 @@
-import { Job, OnlineStatus, Profile } from "../types";
+import { Job, OnlineStatus, Profile } from "./_types/index.js";
 
 export function GET(request: Request) {
   const domain = request.url.split("/")[2];
