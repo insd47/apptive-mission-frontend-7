@@ -99,7 +99,11 @@ export function GET(request: Request) {
 
     return new Response(JSON.stringify(dummyProfiles), {
         headers: {
-            "content-type": "application/json; charset=UTF-8"
+            "content-type": "application/json; charset=UTF-8",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Authorization, Content-Type",
+            "Access-Control-Max-Age": "86400",
         }
     });
 }
@@ -132,7 +136,11 @@ export async function POST(request: Request) {
 
     return new Response("Profile added successfully", {
         headers: {
-            "content-type": "text/plain; charset=UTF-8"
+            "content-type": "text/plain; charset=UTF-8",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Authorization, Content-Type",
+            "Access-Control-Max-Age": "86400",
         }
     });
 }
