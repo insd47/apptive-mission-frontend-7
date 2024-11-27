@@ -130,10 +130,6 @@ export async function POST(request: Request) {
         return new Response("Job is required", {status: 400});
     }
 
-    if (body.image && typeof body.image !== "string") {
-        return new Response("Image must be a string", {status: 400});
-    }
-
     return new Response("Profile added successfully", {
         headers: {
             "content-type": "text/plain; charset=UTF-8",
