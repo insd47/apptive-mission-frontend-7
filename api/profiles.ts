@@ -103,3 +103,36 @@ export function GET(request: Request) {
     }
   });
 }
+
+export async function POST(request: Request) {
+  // 프로필 추가를 위한 function. 우리는 DB 사용을 하지 못하므로 입력값의 Type 검증만 하고 성공 메시지를 반환합니다.
+
+    const authorization = request.headers.get("Authorization")?.split(" ")[1];
+    if (authorization !== process.env.API_KEY) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+    const body = await request.json();
+
+    if (!body.name || typeof body.name !== "string") {
+      return new Response("Name is required", { status: 400 });
+    }
+
+    if (!body.id || typeof body.id !== "string") {
+      return new Response("ID is required", { status: 400 });
+    }
+
+    if (!Object.values(Job).includes(body.job)) {
+      return new Response("Job is required", { status: 400 });
+    }
+
+    if (body.image && typeof body.image !== "string") {
+      return new Response("Image must be a string", { status: 400 });
+    }
+
+    return new Response("Profile added successfully", {
+      headers: {
+        "content-type": "text/plain; charset=UTF-8"
+      }
+    });
+}
