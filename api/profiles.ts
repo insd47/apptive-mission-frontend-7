@@ -126,7 +126,7 @@ export async function POST(request: Request) {
         return new Response("ID is required", {status: 400});
     }
 
-    if (!Object.values(Job).includes(body.job)) {
+    if (!Object.keys(Job).includes(body.job)) {
         return new Response("Job is required", {status: 400});
     }
 
